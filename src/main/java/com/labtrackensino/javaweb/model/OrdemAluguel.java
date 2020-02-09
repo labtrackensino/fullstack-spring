@@ -49,4 +49,7 @@ public class OrdemAluguel  implements Entidade {
 	public Long getId() {
 		return id;
 	}
+
+	public OrdemAluguel() {
+	}
 }

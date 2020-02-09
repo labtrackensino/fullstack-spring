@@ -13,9 +13,15 @@ public class Carro implements Entidade, Veiculo {
 
 
 	@Id
-	@Column(name = "SEQ_CARRO")
+	@Column(name = "ID_CARRO")
 	@GeneratedValue(generator = "SEQ_CARRO", strategy = GenerationType.SEQUENCE)
 	private Long id;
+
+	@Column(name = "NOME", length = 100)
+	private String nome;
+
+	@Column(name = "MODELO", length = 100)
+	private String modelo;
 
 	@Column(name = "MARCA", length = 100)
 	private String marca;
@@ -56,6 +62,14 @@ public class Carro implements Entidade, Veiculo {
 		return quilometragem;
 	}
 
+	public String getNome() {
+		return nome;
+	}
+
+	public String getModelo() {
+		return modelo;
+	}
+
 	@Override
 	public Long getId() {
 		return id;
@@ -64,5 +78,8 @@ public class Carro implements Entidade, Veiculo {
 	@Override
 	public String getNumeroMotor() {
 		return numeroMotor;
+	}
+
+	public Carro() {
 	}
 }

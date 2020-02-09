@@ -16,7 +16,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 @RestController
-@CrossOrigin(origins = "Access-Control-Allow-Origin: *")
+//@CrossOrigin(origins = "Access-Control-Allow-Origin: *")
 @RequestMapping(value = "/carro")
 public class CarroResourse {
 
@@ -30,10 +30,11 @@ public class CarroResourse {
 	 */
 	@RequestMapping(method = GET, produces = APPLICATION_JSON_VALUE, path = "listar")
 	public ResponseEntity listar(
-			@RequestParam(value = "limit") int limit,
-			@RequestParam(value = "offset") int offset
+			@RequestParam(value = "limit" , defaultValue = "0") int limit,
+			@RequestParam(value = "offset", defaultValue = "0") int offset
 	) {
-        Pageable pageable = PageRequest.of(limit, offset, Sort.by(Sort.Direction.DESC, "id"));
+
+        Pageable pageable = PageRequest.of(offset,limit, Sort.by(Sort.Direction.DESC, "id"));
 		Iterable<Carro> carros = repository.findAll(pageable);
 
 		return new ResponseEntity<>(carros, HttpStatus.OK);
